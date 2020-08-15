@@ -4,17 +4,17 @@ DNA isolation, library preparation and bioinformatic screening of highly degrade
 d.o.i.: 
 
 ## SOFTWARE REQUIREMENTS:
-* AdapterRemoval v2	(https://github.com/mikkelschubert/adapterremoval)
-* FastQC		(https://github.com/s-andrews/FastQC)
-* BWA			(https://github.com/lh3/bwa)
-* samtools		(http://www.htslib.org/download/)
-* Dedup			(https://github.com/apeltzer/DeDup)
-* MapDamage		(https://github.com/ginolhac/mapDamage)
+	* AdapterRemoval v2	(https://github.com/mikkelschubert/adapterremoval)
+	* FastQC		(https://github.com/s-andrews/FastQC)
+	* BWA			(https://github.com/lh3/bwa)
+	* samtools		(http://www.htslib.org/download/)
+	* Dedup			(https://github.com/apeltzer/DeDup)
+	* MapDamage		(https://github.com/ginolhac/mapDamage)
 
 ## ENVIRONMENT AND DATA AQUISITION
 
 1. Create the following folders:
-* 1_initial_data/
+* 1\_initial\_data/
 * 1_initial_data/reference_genome/
 * 2_trimmed_merged/
 * 3_quality_control/
@@ -25,7 +25,7 @@ d.o.i.:
 mkdir -p 1_initial_data/reference_genome 2_trimmed_merged 3_quality_control 4_mapping 5_aDNA_characteristics
 ```
 	
-2. We will use MiSeq pair-end Illumina sequences from a herbarium Arabidopsis thaliana sample (Weiss et al., 2016 ; https://doi.org/10.1098/rsos.160239) Download the PAIR 1 of reads to the folder 1_initial_data/
+2. We will use MiSeq pair-end Illumina sequences from a herbarium *Arabidopsis thaliana* sample (Weiss et al., 2016 ; https://doi.org/10.1098/rsos.160239) Download the PAIR 1 of reads to the folder 1_initial_data/
 
 ```
 wget -P 1_initial_data ftp://ftp.sra.ebi.ac.uk/vol1/run/ERR964/ERR964430/s_1_s8_R1.fastq.gz
@@ -106,7 +106,7 @@ bwa aln -l 1024 -f 4_mapping/historicAthaliana.collapsed.sai -t <n_threads> 1_in
 10. Use BWA samse to convert the mapped reads (.sai file) into an alignment in the standard SAM format.
 	
 OPTIONS:  
--r @RG\\tID:sample1\\tSM:sample1 : Read Group tag as "sample1". This will be important for downstream analyses  
+-r \@RG\\tID:sample1\\tSM:sample1 : Read Group tag as "sample1". This will be important for downstream analyses  
 -f 4_mapping/historicAthaliana.collapsed.sam : Location for the aligned sam file (output)  
 1_initial_data/reference_genome/Arabidopsis_thaliana.TAIR10.dna.toplevel.fa : Location of the indexed reference genome  
 4_mapping/historicAthaliana.collapsed.sai : Location of the .sai file  
@@ -121,7 +121,7 @@ bwa samse -r @RG\\tID:sample1\\tSM:sample1 -f 4_mapping/historicAthaliana.collap
 OPTIONS:  
 -@ <n_threads> : Number of threads to be used  
 4_mapping/historicAthaliana.collapsed.sam : Location of the alignment (input)  
-> 4_mapping/historicAthaliana.collapsed.stats : Location for the output
+\> 4_mapping/historicAthaliana.collapsed.stats : Location for the output
 
 ```	
 samtools flagstat -@ <n_threads> 4_mapping/historicAthaliana.collapsed.sam > 4_mapping/historicAthaliana.collapsed.stats
