@@ -6,7 +6,7 @@ header() {
 ################################################################################
 ########   This is a demonstration of the pipeline described in:        ########
 ########                                                                ########
-########         Latorre S.M., Burbano, H.A., Gutaker, R.M. 2020        ########
+########  Latorre S.M., Lang, P.L.M., Burbano, H.A., Gutaker, R.M. 2020 ########
 ######## DNA isolation, library preparation and bioinformatic screening ########
 ########                 of highly degraded plant DNA                   ########
 ########                       d.o.i.: XXXXXX                           ########
