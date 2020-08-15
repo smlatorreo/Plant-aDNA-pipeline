@@ -5,11 +5,11 @@ d.o.i.:
 
 ## SOFTWARE REQUIREMENTS:
 * AdapterRemoval v2&ensp;(https://github.com/mikkelschubert/adapterremoval)
-* FastQC                (https://github.com/s-andrews/FastQC)
-* BWA                   (https://github.com/lh3/bwa)
-* samtools              (http://www.htslib.org/download/)
-* Dedup                 (https://github.com/apeltzer/DeDup)
-* MapDamage             (https://github.com/ginolhac/mapDamage)
+* FastQC&ensp;&ensp;(https://github.com/s-andrews/FastQC)
+* BWA&ensp;&ensp;&ensp;(https://github.com/lh3/bwa)
+* samtools&ensp;&ensp;(http://www.htslib.org/download/)
+* Dedup&ensp;&ensp;&ensp;(https://github.com/apeltzer/DeDup)
+* MapDamage&ensp;&ensp;(https://github.com/ginolhac/mapDamage)
 
 ## ENVIRONMENT AND DATA AQUISITION
 
