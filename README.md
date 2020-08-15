@@ -1,5 +1,5 @@
 This is a demonstration of the pipeline described in:  
-**Latorre S.M., Burbano, H.A., Gutaker, R.M. 2020. DNA isolation, library preparation and bioinformatic screening of highly degraded plant DNA**
+**Latorre S.M., Burbano, H.A., Gutaker, R.M. 2020. DNA isolation, library preparation and bioinformatic screening of highly degraded plant DNA**  
 d.o.i.: 
 
 To run the pipeline in your own machine, just download the file: plant\_aDNA\_pipeline.sh  
