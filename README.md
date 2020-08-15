@@ -4,12 +4,12 @@ DNA isolation, library preparation and bioinformatic screening of highly degrade
 d.o.i.: 
 
 ## SOFTWARE REQUIREMENTS:
-        * AdapterRemoval v2	(https://github.com/mikkelschubert/adapterremoval)
-        * FastQC		(https://github.com/s-andrews/FastQC)
-        * BWA			(https://github.com/lh3/bwa)
-        * samtools		(http://www.htslib.org/download/)
-        * Dedup			(https://github.com/apeltzer/DeDup)
-        * MapDamage		(https://github.com/ginolhac/mapDamage)
+* AdapterRemoval v2	(https://github.com/mikkelschubert/adapterremoval)
+* FastQC		(https://github.com/s-andrews/FastQC)
+* BWA			(https://github.com/lh3/bwa)
+* samtools		(http://www.htslib.org/download/)
+* Dedup			(https://github.com/apeltzer/DeDup)
+* MapDamage		(https://github.com/ginolhac/mapDamage)
 
 ## ENVIRONMENT AND DATA AQUISITION
 
@@ -41,15 +41,15 @@ wget -P 1_initial_data ftp://ftp.sra.ebi.ac.uk/vol1/run/ERR964/ERR964430/s_1_s8_
 	
 4. AdapterRemoval will be used to both remove Illumina adapters and merge paired reads when possible.
 	
-	OPTIONS:
-	--file1 1_initial_data/s_1_s8_R1.fastq.gz : Location of PAIR 1 file
-	--file2 1_initial_data/s_1_s8_R2.fastq.gz : Location of PAIR 2 file
-	--qualitybase 64 : Input Quality Score encoding is 64
-	--qualitybase-output 33 : Output Quality Score encoding is 33 (standard)
-	--basename 3_trimmed_merged/historicAthaliana : Location and prefix for the output files
-	--collapse : Merge trimmed reads when possible
-	--gzip : Output is compressed
-	--threads $nthreads : Number of threads to be used
+OPTIONS:  
+--file1 1_initial_data/s_1_s8_R1.fastq.gz : Location of PAIR 1 file  
+--file2 1_initial_data/s_1_s8_R2.fastq.gz : Location of PAIR 2 file  
+--qualitybase 64 : Input Quality Score encoding is 64  
+--qualitybase-output 33 : Output Quality Score encoding is 33 (standard)  
+--basename 3_trimmed_merged/historicAthaliana : Location and prefix for the output files  
+--collapse : Merge trimmed reads when possible  
+--gzip : Output is compressed  
+--threads $nthreads : Number of threads to be used
 
 ```	
 AdapterRemoval --file1 1_initial_data/s_1_s8_R1.fastq.gz --file2 1_initial_data/s_1_s8_R2.fastq.gz --qualitybase 64 --qualitybase-output 33 --basename 2_trimmed_merged/historicAthaliana --collapse --gzip --threads <n_threads>
@@ -59,12 +59,12 @@ AdapterRemoval --file1 1_initial_data/s_1_s8_R1.fastq.gz --file2 1_initial_data/
 
 5. To assess the read quality of the sample, we will use the program FastQC.
 	
-	OPTIONS:
-	-o 3_quality_control/ : The results will be stored in 2_QC/
-	-t <n_threads> : Number of threads to be used
-	2_trimmed_merged/historicAthaliana.collapsed.gz : Location of the trimmed and merged reads
-	2_trimmed_merged/historicAthaliana.pair1.truncated.gz : Location of the trimmed PAIR 1 reads
-	2_trimmed_merged/historicAthaliana.pair2.truncated.gz : Location of the trimmed PAIR 2 reads
+OPTIONS:  
+-o 3_quality_control/ : The results will be stored in 2_QC/  
+-t <n_threads> : Number of threads to be used  
+2_trimmed_merged/historicAthaliana.collapsed.gz : Location of the trimmed and merged reads  
+2_trimmed_merged/historicAthaliana.pair1.truncated.gz : Location of the trimmed PAIR 1 reads  
+2_trimmed_merged/historicAthaliana.pair2.truncated.gz : Location of the trimmed PAIR 2 reads
 
 ```	
 fastqc -o 3_quality_control/ -t <n_threads> 2_trimmed_merged/historicAthaliana.collapsed.gz 2_trimmed_merged/historicAthaliana.pair1.truncated.gz 2_trimmed_merged/historicAthaliana.pair2.truncated.gz
@@ -91,13 +91,13 @@ samtools faidx 1_initial_data/reference_genome/Arabidopsis_thaliana.TAIR10.dna.t
 
 9. Use BWA aln to map the preprocessed (trimmed and merged) reads to the A. thaliana reference genome.
 	
-	OPTIONS:
-	-l 1024 : Set the seed to a very high value (1024) to inactivate it
-	-f mapping/historicAthaliana.collapsed.sai : Path and name for the output file
-	-t $nthreads : Number of threads to be used
-	1_initial_data/reference_genome/Arabidopsis_thaliana.TAIR10.dna.toplevel.fa : Location of the indexed reference genome
-	2_trimmed_merged/historicAthaliana.collapsed.gz : Location of the trimmed and merged reads
-	-t <n_threads> : Number of threads to be used
+OPTIONS:
+-l 1024 : Set the seed to a very high value (1024) to inactivate it  
+-f mapping/historicAthaliana.collapsed.sai : Path and name for the output file  
+-t $nthreads : Number of threads to be used  
+1_initial_data/reference_genome/Arabidopsis_thaliana.TAIR10.dna.toplevel.fa : Location of the indexed reference genome  
+2_trimmed_merged/historicAthaliana.collapsed.gz : Location of the trimmed and merged reads  
+-t <n_threads> : Number of threads to be used
 
 ```	
 bwa aln -l 1024 -f 4_mapping/historicAthaliana.collapsed.sai -t <n_threads> 1_initial_data/reference_genome/Arabidopsis_thaliana.TAIR10.dna.toplevel.fa 2_trimmed_merged/historicAthaliana.collapsed.gz
@@ -105,12 +105,12 @@ bwa aln -l 1024 -f 4_mapping/historicAthaliana.collapsed.sai -t <n_threads> 1_in
 
 10. Use BWA samse to convert the mapped reads (.sai file) into an alignment in the standard SAM format.
 	
-	OPTIONS:
-	-r @RG\\tID:sample1\\tSM:sample1 : Read Group tag as "sample1". This will be important for downstream analyses
-	-f 4_mapping/historicAthaliana.collapsed.sam : Location for the aligned sam file (output)
-	1_initial_data/reference_genome/Arabidopsis_thaliana.TAIR10.dna.toplevel.fa : Location of the indexed reference genome
-	4_mapping/historicAthaliana.collapsed.sai : Location of the .sai file
-	2_trimmed_merged/historicAthaliana.collapsed.gz : Location of the trimmed and merged reads
+OPTIONS:  
+-r @RG\\tID:sample1\\tSM:sample1 : Read Group tag as "sample1". This will be important for downstream analyses  
+-f 4_mapping/historicAthaliana.collapsed.sam : Location for the aligned sam file (output)  
+1_initial_data/reference_genome/Arabidopsis_thaliana.TAIR10.dna.toplevel.fa : Location of the indexed reference genome  
+4_mapping/historicAthaliana.collapsed.sai : Location of the .sai file  
+2_trimmed_merged/historicAthaliana.collapsed.gz : Location of the trimmed and merged reads
 
 ```	
 bwa samse -r @RG\\tID:sample1\\tSM:sample1 -f 4_mapping/historicAthaliana.collapsed.sam 1_initial_data/reference_genome/Arabidopsis_thaliana.TAIR10.dna.toplevel.fa 4_mapping/historicAthaliana.collapsed.sai 2_trimmed_merged/historicAthaliana.collapsed.gz'
@@ -118,10 +118,10 @@ bwa samse -r @RG\\tID:sample1\\tSM:sample1 -f 4_mapping/historicAthaliana.collap
 
 11. Use samtools flagstat to estimate the endogenous DNA as the proportion of mapped reads.
 	
-	OPTIONS:
-	-@ <n_threads> : Number of threads to be used
-	4_mapping/historicAthaliana.collapsed.sam : Location of the alignment (input) 
-	> 4_mapping/historicAthaliana.collapsed.stats : Location for the output
+OPTIONS:  
+-@ <n_threads> : Number of threads to be used  
+4_mapping/historicAthaliana.collapsed.sam : Location of the alignment (input)  
+> 4_mapping/historicAthaliana.collapsed.stats : Location for the output
 
 ```	
 samtools flagstat -@ <n_threads> 4_mapping/historicAthaliana.collapsed.sam > 4_mapping/historicAthaliana.collapsed.stats
@@ -129,13 +129,13 @@ samtools flagstat -@ <n_threads> 4_mapping/historicAthaliana.collapsed.sam > 4_m
 	
 12. Since the SAM (Sequence Alignment Map) format is a plain text file, it can be efficiently compressed into a BAM (Binary Alignment Map) format using samtools. This allows to save disk space. Moreover, unmapped reads can be discarded.
 	
-	OPTIONS:
-	-@ <n_threads> : Number of threads to be used
-	-Sb : The input is (S)AM and the output is (b)am
-	-h : Include the header in the output
-	-F 4 : Discard unmapped reads
-	-o 4_mapping/historicAthaliana.mapped.bam : Location for the output file
-	4_mapping/historicAthaliana.collapsed.sam : Location of the input file
+OPTIONS:  
+-@ <n_threads> : Number of threads to be used  
+-Sb : The input is (S)AM and the output is (b)am  
+-h : Include the header in the output  
+-F 4 : Discard unmapped reads  
+-o 4_mapping/historicAthaliana.mapped.bam : Location for the output file  
+4_mapping/historicAthaliana.collapsed.sam : Location of the input file
 
 ```	
 samtools view -@ <n_threads> -Sb -h -F 4 -o 4_mapping/historicAthaliana.mapped.bam 4_mapping/historicAthaliana.collapsed.sam
@@ -149,10 +149,10 @@ rm 4_mapping/historicAthaliana.collapsed.sam
 	
 14. Most downstream analyses require coordinate-based sorted files. Use samtools to sort the mapped bam file.
 	
-	OPTIONS:
-	-@ <n_threads> :  Number of threads to be used
-	-o 4_mapping/historicAthaliana.mapped.sorted.bam : Location for the sorted output
-	4_mapping/historicAthaliana.mapped.bam : Location of the unsorted mapped reads (input)
+OPTIONS:  
+-@ <n_threads> :  Number of threads to be used  
+-o 4_mapping/historicAthaliana.mapped.sorted.bam : Location for the sorted output  
+4_mapping/historicAthaliana.mapped.bam : Location of the unsorted mapped reads (input)
 
 ```	
 samtools sort -@ <n_threads> -o 4_mapping/historicAthaliana.mapped.sorted.bam 4_mapping/historicAthaliana.mapped.bam
@@ -168,10 +168,10 @@ rm 4_mapping/historicAthaliana.mapped.bam
 
 16. For downstream analyses it is important to remove the optical PCR duplicates.
 	
-	OPTIONS:
-	-i 4_mapping/historicAthaliana.mapped.sorted.bam : Location of the mapped and sorted file (input)
-	-m : The input contains merged reads
-	-o 4_mapping/ : Location of the output folder
+OPTIONS:  
+-i 4_mapping/historicAthaliana.mapped.sorted.bam : Location of the mapped and sorted file (input)  
+-m : The input contains merged reads  
+-o 4_mapping/ : Location of the output folder
 
 ```	
 java -jar deDup.jar -i 4_mapping/historicAthaliana.mapped.sorted.bam -m -o 4_mapping/
@@ -181,12 +181,12 @@ java -jar deDup.jar -i 4_mapping/historicAthaliana.mapped.sorted.bam -m -o 4_map
 
 17. Use mapDamage2 to assess the aDNA damage on the BAM file	
 	
-	OPTIONS:
-	-i 4_mapping/historicAthaliana.mapped.sorted_rmdup.bam : Location of the input file
-	-r 1_initial_data/reference_genome/Arabidopsis_thaliana.TAIR10.dna.toplevel.fa : Location of the reference genome
-	--no-stats : Disable the statistical calculation
-	-y 0.05 : Plot Y-axis for nucleotide misincorporation frequencies plot up to 0.05
-	-d 5_aDNA_characteristics/ : Location of the output folder
+OPTIONS:  
+-i 4_mapping/historicAthaliana.mapped.sorted_rmdup.bam : Location of the input file  
+-r 1_initial_data/reference_genome/Arabidopsis_thaliana.TAIR10.dna.toplevel.fa : Location of the reference genome  
+--no-stats : Disable the statistical calculation  
+-y 0.05 : Plot Y-axis for nucleotide misincorporation frequencies plot up to 0.05  
+-d 5_aDNA_characteristics/ : Location of the output folder
 
 ```	
 mapDamage -i 4_mapping/historicAthaliana.mapped.sorted_rmdup.bam -r 1_initial_data/reference_genome/Arabidopsis_thaliana.TAIR10.dna.toplevel.fa --no-stats -y 0.05 -d 5_aDNA_characteristics
