@@ -1,15 +1,24 @@
-This is a demonstration of the pipeline described in:
-Latorre S.M., Burbano, H.A., Gutaker, R.M. 2020
-DNA isolation, library preparation and bioinformatic screening of highly degraded plant DNA
+This is a demonstration of the pipeline described in:  
+Latorre S.M., Burbano, H.A., Gutaker, R.M. 2020. DNA isolation, library preparation and bioinformatic screening of highly degraded plant DNA
 d.o.i.: 
 
+To run the pipeline in your own machine, just download the file: plant\_aDNA\_pipeline.sh  
+Then, simply type the following command and follow the instructions:
+```
+bash plant\_aDNA\_pipeline.sh --help
+```
+
+Alternatively, you can follow by copy-pasting the following demonstration steps
+
 ## SOFTWARE REQUIREMENTS:
-* AdapterRemoval v2&ensp;(https://github.com/mikkelschubert/adapterremoval)
-* FastQC&ensp;&ensp;(https://github.com/s-andrews/FastQC)
-* BWA&ensp;&ensp;&ensp;(https://github.com/lh3/bwa)
-* samtools&ensp;&ensp;(http://www.htslib.org/download/)
-* Dedup&ensp;&ensp;&ensp;(https://github.com/apeltzer/DeDup)
-* MapDamage&ensp;&ensp;(https://github.com/ginolhac/mapDamage)
+<pre>
+* AdapterRemoval v2	(https://github.com/mikkelschubert/adapterremoval)
+* FastQC		(https://github.com/s-andrews/FastQC)
+* BWA			(https://github.com/lh3/bwa)
+* samtools		(http://www.htslib.org/download/)
+* Dedup			(https://github.com/apeltzer/DeDup)
+* MapDamage		(https://github.com/ginolhac/mapDamage)
+</pre>
 
 ## ENVIRONMENT AND DATA AQUISITION
 
