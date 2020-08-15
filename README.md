@@ -5,20 +5,18 @@ d.o.i.:
 To run the pipeline in your own machine, just download the file: plant\_aDNA\_pipeline.sh  
 Then, simply type the following command and follow the instructions:
 ```
-bash plant\_aDNA\_pipeline.sh --help
+bash plant_aDNA_pipeline.sh --help
 ```
 
 Alternatively, you can follow by copy-pasting the following demonstration steps
 
 ## SOFTWARE REQUIREMENTS:
-<pre>
-* AdapterRemoval v2	(https://github.com/mikkelschubert/adapterremoval)
-* FastQC		(https://github.com/s-andrews/FastQC)
-* BWA			(https://github.com/lh3/bwa)
-* samtools		(http://www.htslib.org/download/)
-* Dedup			(https://github.com/apeltzer/DeDup)
-* MapDamage		(https://github.com/ginolhac/mapDamage)
-</pre>
+* AdapterRemoval v2&nbsp;&nbsp;(https://github.com/mikkelschubert/adapterremoval)
+* FastQC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(https://github.com/s-andrews/FastQC)
+* BWA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(https://github.com/lh3/bwa)
+* samtools&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(http://www.htslib.org/download/)
+* Dedup&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(https://github.com/apeltzer/DeDup)
+* MapDamage&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(https://github.com/ginolhac/mapDamage)
 
 ## ENVIRONMENT AND DATA AQUISITION
 
