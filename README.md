@@ -11,6 +11,9 @@ bash plant_aDNA_pipeline.sh --help
 Alternatively, you can follow by copy-pasting the following demonstration steps
 
 ## SOFTWARE REQUIREMENTS:
+
+Program           | Download Link
+----------------- | --------------------------
 AdapterRemoval v2 | (https://github.com/mikkelschubert/adapterremoval)
 FastQC            | (https://github.com/s-andrews/FastQC)
 BWA               | (https://github.com/lh3/bwa)
