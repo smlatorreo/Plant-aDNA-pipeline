@@ -4,7 +4,7 @@ DNA isolation, library preparation and bioinformatic screening of highly degrade
 d.o.i.: 
 
 ## SOFTWARE REQUIREMENTS:
-* AdapterRemoval v2     (https://github.com/mikkelschubert/adapterremoval)
+* AdapterRemoval v2&ensp;(https://github.com/mikkelschubert/adapterremoval)
 * FastQC                (https://github.com/s-andrews/FastQC)
 * BWA                   (https://github.com/lh3/bwa)
 * samtools              (http://www.htslib.org/download/)
@@ -74,7 +74,7 @@ fastqc -o 3_quality_control/ -t <n_threads> 2_trimmed_merged/historicAthaliana.c
 
 ## MAPPING
 	
-7. Since the reads originate from an A. thaliana herbarium sample, the most suitable reference genome to use is the TAIR-10 A. thaliana assembly. The following command will download it and place it inside 1\_initial\_data/reference\_genome/
+7. Since the reads originate from an A. thaliana herbarium sample, the most suitable reference genome to use is the TAIR-10 *A. thaliana* assembly. The following command will download it and place it inside 1\_initial\_data/reference\_genome/
 
 ```	
 curl ftp://ftp.ensemblgenomes.org/pub/plants/release-47/fasta/arabidopsis_thaliana/dna/Arabidopsis_thaliana.TAIR10.dna.toplevel.fa.gz | zcat > 1_initial_data/reference_genome/Arabidopsis_thaliana.TAIR10.dna.toplevel.fa
