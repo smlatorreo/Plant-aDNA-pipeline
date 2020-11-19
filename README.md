@@ -1,7 +1,7 @@
 This is a demonstration of the pipeline described in:  
 **Latorre S.M., Lang, P.L.M., Burbano, H.A., Gutaker, R.M. 2020.  
-DNA isolation, library preparation and bioinformatic screening of highly degraded plant DNA**  
-d.o.i.: 
+Isolation, Library Preparation, and Bioinformatic Analysis of Historical and Ancient Plant DNA**  
+d.o.i.: https://doi.org/10.1002/cppb.20121
 
 To run the pipeline in your own machine, just download the file: plant\_aDNA\_pipeline.sh  
 Then, simply type the following command and follow the instructions:
