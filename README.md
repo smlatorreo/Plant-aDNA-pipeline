@@ -22,7 +22,7 @@ samtools          | (http://www.htslib.org/download/)
 Dedup             | (https://github.com/apeltzer/DeDup)
 MapDamage         | (https://github.com/ginolhac/mapDamage)
 
-## ENVIRONMENT AND DATA AQUISITION
+## ENVIRONMENT AND DATA ACQUISITION
 
 1. Create the following folders:
 * 1\_initial\_data/
