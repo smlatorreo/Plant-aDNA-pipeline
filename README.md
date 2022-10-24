@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/333746176.svg)](https://zenodo.org/badge/latestdoi/333746176)
+
 This is a demonstration of the pipeline described in:  
 **Latorre S.M., Lang, P.L.M., Burbano, H.A., Gutaker, R.M. 2020.  
 Isolation, Library Preparation, and Bioinformatic Analysis of Historical and Ancient Plant DNA**  
